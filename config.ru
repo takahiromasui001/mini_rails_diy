@@ -1,10 +1,12 @@
 require 'rack'
+require 'bundler/setup'
+require 'action_dispatch'
+require 'debug'
+require_relative 'app/controllers/home_controller'
 
-use Rack::Static,
-    urls: ['/'],
-    root: 'public',
-    index: 'index.html'
+app = ActionDispatch::Routing::RouteSet.new
+app.draw do
+  get '/home', to: 'home#index'
+end
 
-run lambda { |_env|
-  [200, { 'Content-Type' => 'text/html' }, ['Hello world!']]
-}
+run app

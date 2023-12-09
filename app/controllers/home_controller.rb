@@ -1,10 +1,6 @@
-require 'active_support/all'
-require 'abstract_controller'
-require 'action_controller'
-require 'action_controller/metal'
-require 'action_controller/base'
+require_relative 'application_controller'
 
-class HomeController < ActionController::Base
+class HomeController < ApplicationController
   def index
     render plain: 'test index'
   end
